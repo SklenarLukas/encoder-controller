@@ -13,13 +13,15 @@
 #include "driver/gpio.h"
 #include "esp_sleep.h"
 
+#include "leds.h"
+
 static const char *TAG = "example";
 
 #define EXAMPLE_PCNT_HIGH_LIMIT 100
 #define EXAMPLE_PCNT_LOW_LIMIT -100
 
-#define EXAMPLE_EC11_GPIO_A 0
-#define EXAMPLE_EC11_GPIO_B 2
+#define EXAMPLE_EC11_GPIO_A 33
+#define EXAMPLE_EC11_GPIO_B 25
 
 static bool example_pcnt_on_reach(pcnt_unit_handle_t unit, const pcnt_watch_event_data_t *edata, void *user_ctx)
 {
@@ -34,6 +36,9 @@ extern "C"
 {
     void app_main(void)
     {
+
+        ledsInit();
+
         ESP_LOGI(TAG, "install pcnt unit");
         pcnt_unit_config_t unit_config = {
             .low_limit = EXAMPLE_PCNT_LOW_LIMIT,
