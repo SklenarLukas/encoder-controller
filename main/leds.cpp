@@ -26,6 +26,6 @@ void ledsInit()
     {
         gpio_reset_pin(LEDS[i]);
         gpio_set_direction(LEDS[i], GPIO_MODE_OUTPUT);
-        gpio_set_level(LEDS[i], 1);
+        // gpio_set_level(LEDS[i], 1);
     }
 }

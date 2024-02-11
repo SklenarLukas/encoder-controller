@@ -1,6 +1,7 @@
 #pragma once
 
 #include "driver/gpio.h"
+#include "driver/pulse_cnt.h"
 
 class Encoder
 {
@@ -24,7 +25,8 @@ public:
     virtual ~Encoder();
 
 public:
-    void encoderInit();
+    static bool example_pcnt_on_reach(pcnt_unit_handle_t unit, const pcnt_watch_event_data_t *edata, void *user_ctx);
+    void encoderConfig();
     void encoderRotate();
     void encoderRemoteLightState(Mode p_new_mode);
 };
